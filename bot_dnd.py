@@ -1,9 +1,6 @@
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import google.generativeai as genai
-import threading
-import http.server
-import socketserver
 import random
 import json
 import re
@@ -409,18 +406,3 @@ for event in longpoll.listen():
                 f'{user_name}, бот глючит. Напиши админу.'
             )
             send_long_message(peer_id, friendly_error)
-            
-# Фейковый веб-сервер на порту 10000 (не мешает боту)
-def start_fake_server():
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", 10000), handler) as httpd:
-        print("Фейковый сервер запущен на порту 10000")
-        httpd.serve_forever()
-
-# Запускаем в фоне
-threading.Thread(target=start_fake_server, daemon=True).start()
-
-# Твой основной код бота
-if __name__ == '__main__':
-    # ... твой код polling ...
-    app.run_polling()
