@@ -1,0 +1,21 @@
+# Виртуальное окружение
+env/
+.venv/
+venv/
+ENV/
+
+# Windows
+*.bat
+*.exe
+
+# Python кэш
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# Логи и временные файлы
+*.log
+*.tmp
