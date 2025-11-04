@@ -345,7 +345,8 @@ for event in longpoll.listen():
             if uploaded_search_file:
                 prompt_parts.extend([
                     "Ниже — содержимое сайтов по запросу. Дай ТОЧНЫЙ анализ.",
-                    "Ищи факты: даты, цифры, имена. Игнорируй рекламу.",
+                    "Ищи факты: даты, цифры, имена. Игнорируй рекламу. Не нужно в сообщении указывать источники и ссылки, если не просят.",
+                    "Только информация по запросу",
                     uploaded_search_file
                 ])
             
@@ -360,7 +361,6 @@ for event in longpoll.listen():
             )
             
             ai_answer = response.text.strip()
-            ai_answer += sources_text
             
             # Удаляем временный файл
             if search_file_path and os.path.exists(search_file_path):
